@@ -6,6 +6,10 @@ cap = cv2.VideoCapture('video.mp4')
 # Check if camera opened successfully or the video file is opened
 if not cap.isOpened():
     print("Error opening video file")
+    
+# Determine the number of frames to skip for a 5-second jump
+fps = cap.get(cv2.CAP_PROP_FPS)
+skip_frames = int(fps * 5)
 
 # Read video file frame by frame
 pause = False
@@ -13,9 +17,12 @@ wait_time = 25
 playback_speed = 1.0
 message = ""
 message_duration = 0
+current_frame = 0
 while cap.isOpened():
     if not pause:
         ret, frame = cap.read()
+        if ret:
+            current_frame += 1
 
     if ret:
         # Display playback speed on the top left corner of the frame
@@ -55,12 +62,43 @@ while cap.isOpened():
         elif key & 0xFF == ord('+'):
             wait_time = max(1, wait_time - 5)
             playback_speed = 25.0 / wait_time
-            message = f"Speed: {playback_speed:.1f}x"
-            message_duration = 1000
         elif key & 0xFF == ord('-'):
             wait_time += 5
             playback_speed = 25.0 / wait_time
-            message = f"Speed: {playback_speed:.1f}x"
+        elif key & 0xFF == ord('a'):
+            # Go back one frame
+            current_frame = max(0, current_frame - 2)
+            cap.set(cv2.CAP_PROP_POS_FRAMES, current_frame)
+            ret, frame = cap.read()
+            if ret:
+                message = "Previous frame"
+                message_duration = 1000
+                current_frame += 1
+            if not ret:
+                print("Error reading frame")
+        elif key & 0xFF == ord('d'):
+            # Go forward one frame
+            ret, frame = cap.read()
+            current_frame += 1
+            message = "Next frame"
+            message_duration = 1000
+            if not ret:
+                print("Error reading frame")
+        elif key & 0xff == ord("z"):  
+            # Go back 5 seconds
+            current_time = cap.get(cv2.CAP_PROP_POS_MSEC)
+            new_time = max(0, current_time - 5000)
+            cap.set(cv2.CAP_PROP_POS_MSEC, new_time)
+            current_frame = int(new_time / 1000 * fps)
+            message = "5 Sec. Forward"
+            message_duration = 1000
+        elif key & 0xff == ord("x"):  
+            # Go forward 5 seconds
+            current_time = cap.get(cv2.CAP_PROP_POS_MSEC)
+            new_time = current_time + 5000
+            cap.set(cv2.CAP_PROP_POS_MSEC, new_time)
+            current_frame = int(new_time / 1000 * fps)
+            message = "5 Sec. Backward"
             message_duration = 1000
     else:
         break
