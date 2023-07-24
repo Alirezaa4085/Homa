@@ -1,4 +1,5 @@
 import cv2
+import time
 
 # Create a VideoCapture object
 cap = cv2.VideoCapture('video.mp4')
@@ -10,6 +11,13 @@ if not cap.isOpened():
 # Determine the number of frames to skip for a 5-second jump
 fps = cap.get(cv2.CAP_PROP_FPS)
 skip_frames = int(fps * 5)
+
+
+# Variables to calculate FPS
+frame_counter = 0
+start_time = time.time()
+fps = 0
+
 
 # Read video file frame by frame
 pause = False
@@ -25,6 +33,24 @@ while cap.isOpened():
             current_frame += 1
 
     if ret:
+
+        frame_counter += 1
+        # Calculate FPS every second
+        if frame_counter % 60 == 0:
+            end_time = time.time()
+            fps = frame_counter / (end_time - start_time)
+            # Reset the variables
+            frame_counter = 0
+            start_time = time.time()
+        # Write FPS onto the frame
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        text = f"FPS: {fps:.0f}"
+        text_size, _ = cv2.getTextSize(text, font, 1, 2)
+        text_width, text_height = text_size
+        cv2.rectangle(frame, (0, 30), (text_width + 20, text_height + 40), (0, 0, 0), -1)
+        cv2.putText(frame, text, (5, text_height + 35), font, 1, (255, 255, 255), 2)
+
+
         # Display playback speed on the top left corner of the frame
         font = cv2.FONT_HERSHEY_SIMPLEX
         text = f"Speed: {playback_speed:.1f}x"
