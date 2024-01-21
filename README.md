@@ -1,6 +1,7 @@
 Key inputs are received for various functionalities:
 
 q: Quit the video playback.
+
 space: Toggle pause and play.
 s: Take a screenshot of the current frame.
 +: Increase the playback speed.
