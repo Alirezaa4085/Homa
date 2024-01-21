@@ -1,6 +1,12 @@
-# Video Playback Program
+[🇬🇧 English](README.md) | [🇮🇷 فارسی](README.fa.md)
 
-Welcome to the Video Playback Program! This project represents the culmination of my work in the video section, incorporating all the essential features. Moving forward, I plan to introduce additional options and enhancements in subsequent versions.
+[🌐 Translate to Persian](https://translate.google.com/?sl=en&tl=fa&text=https://github.com/Alirezaa4085/Homa)
+
+...
+
+# Homa Video Check - Small Yet Essential Component
+
+Welcome to the Homa Video Check project, a fundamental part of the larger Homa project focused on video analysis in volleyball. This small yet essential component serves as a starting point, with plenty of room for improvement. Despite its humble size, it encompasses all the necessary features to lay the groundwork for the broader Homa initiative.
 
 ## Features
 
@@ -19,10 +25,10 @@ Welcome to the Video Playback Program! This project represents the culmination o
 
 ## Usage
 
-Feel free to explore and utilize the program's functionalities using the specified key inputs. Whether you're capturing moments with screenshots or adjusting the playback speed, this program provides a versatile and enjoyable video playback experience.
+This component offers a modest yet effective video playback experience, catering to the specific needs of volleyball video analysis within the Homa project. Capture key moments with screenshots or adjust playback speed to facilitate comprehensive video assessment.
 
-## Future Versions
+## Future Enhancements
 
-Stay tuned for upcoming versions, where I'll be introducing new options and enhancements to further elevate the capabilities of this video playback program.
+While the current version serves its purpose, future iterations will introduce additional features and improvements to contribute to the broader Homa project's success. Stay tuned for updates, as we continue to evolve this humble yet crucial component.
 
-Thank you for checking out my project! If you have any questions or suggestions, feel free to reach out. Happy video watching!
+Your support and feedback are invaluable. If you have any questions or suggestions, please feel free to reach out. Together, we aim to build something remarkable. Thank you for being part of the Homa journey!
