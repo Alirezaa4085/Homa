@@ -1,9 +1,5 @@
 [🇬🇧 English](README.md) | [🇮🇷 فارسی](README.fa.md)
 
-[🌐 Translate to Persian](https://translate.google.com/?sl=en&tl=fa&text=https://github.com/Alirezaa4085/Homa)
-
-...
-
 # Homa Video Check - Small Yet Essential Component
 
 Welcome to the Homa Video Check project, a fundamental part of the larger Homa project focused on video analysis in volleyball. This small yet essential component serves as a starting point, with plenty of room for improvement. Despite its humble size, it encompasses all the necessary features to lay the groundwork for the broader Homa initiative.
